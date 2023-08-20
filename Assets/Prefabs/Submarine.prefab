@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &9073683841056798892
 Transform:
@@ -93,13 +93,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3800868671565805597}
+  - component: {fileID: 1461006143260408399}
+  - component: {fileID: 443916093000068029}
   - component: {fileID: 4646547028994836333}
   m_Layer: 6
   m_Name: Submarine
   m_TagString: Submarine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3800868671565805597
 Transform:
@@ -115,8 +117,33 @@ Transform:
   m_Children:
   - {fileID: 1498382072762239863}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1461006143260408399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730448305787177767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1561a1a5a6aaaca42b505b25e3860376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &443916093000068029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730448305787177767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4ab210ec1a15847a6b50af57283146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!70 &4646547028994836333
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -167,7 +194,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1498382072762239863
 Transform:

@@ -133,7 +133,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edfdae1c581b11746bf4b7b29baf283c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 3d3d53d60c1d700469aa15f45c2e8336, type: 2}
+  type: 0
+  health: 25
+  armor: 5
+  damage: 10
+  range: 5
+  attackSpeed: 1
+  speed: 500
+  target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
 --- !u!114 &6013692165548068443
 MonoBehaviour:
   m_ObjectHideFlags: 0
