@@ -24,11 +24,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("movement input: " + playerInput.movementInput);
         Debug.Log("Movement applied: " + Time.deltaTime * acceleration * playerInput.movementInput);
 
-        MovePlayer(Time.deltaTime * acceleration * playerInput.movementInput);
+        MovePlayer();
     }
 
-    void MovePlayer(Vector2 forceVector)
+    void MovePlayer()
     {
-        rb.AddForce(forceVector, ForceMode2D.Force);
+        rb.AddForce(Time.deltaTime * acceleration * playerInput.movementInput, ForceMode2D.Force);
     }
 }
