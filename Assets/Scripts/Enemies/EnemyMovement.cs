@@ -27,6 +27,10 @@ public class EnemyMovement : MonoBehaviour
 
     void MoveToTarget()
     {
-        rb.AddForce(direction, ForceMode2D.Force);
+        if (Vector3.Distance(target.position, transform.position) > stats.range)
+            rb.AddForce(Time.deltaTime * stats.speed * direction, ForceMode2D.Force);
+
+        //else if (rb.velocity.magnitude > 0.1f)
+        //    rb.AddForce(Time.deltaTime * stats.speed * -rb.velocity, ForceMode2D.Force);
     }
 }
