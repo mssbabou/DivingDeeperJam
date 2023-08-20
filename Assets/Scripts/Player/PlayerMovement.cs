@@ -7,35 +7,28 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] float maxSpeed;
     [SerializeField] float acceleration;
-    [SerializeField] float deceleration;
-
-    private Vector2 currentSpeed = Vector2.zero;
 
     PlayerInput playerInput;
+    Rigidbody2D rb;
 
     void Awake ()
     {
         playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("current speed" + currentSpeed);
+        Debug.Log("movement input: " + playerInput.movementInput);
+        Debug.Log("Movement applied: " + Time.deltaTime * acceleration * playerInput.movementInput);
 
-        if (playerInput.movementInput.magnitude > 0)
-            currentSpeed = Vector2.Lerp(currentSpeed, playerInput.movementInput * maxSpeed, acceleration * Time.deltaTime);
-
-        else if (currentSpeed.magnitude > 0)
-            currentSpeed = Vector2.Lerp(currentSpeed, Vector2.zero, acceleration * Time.deltaTime);
-
-        MovePlayer();
+        MovePlayer(Time.deltaTime * acceleration * playerInput.movementInput);
     }
 
-    void MovePlayer()
+    void MovePlayer(Vector2 forceVector)
     {
-        transform.position += (Vector3)currentSpeed * Time.deltaTime;
+        rb.AddForce(forceVector, ForceMode2D.Force);
     }
 }
