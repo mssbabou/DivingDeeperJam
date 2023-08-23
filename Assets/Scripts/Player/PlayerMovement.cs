@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.AddForce(Time.deltaTime * acceleration * playerInput.movementInput, ForceMode2D.Force);
 
-        targetRotation = Quaternion.FromToRotation(transform.up, playerInput.movementInput).eulerAngles.z;
+        targetRotation = Quaternion.FromToRotation(transform.right, playerInput.movementInput).eulerAngles.z;
         targetRotation = Mathf.Repeat(targetRotation + 180, 360) - 180;
         
         rb.AddTorque(turnAcceleration * targetRotation * Time.deltaTime, ForceMode2D.Force);
