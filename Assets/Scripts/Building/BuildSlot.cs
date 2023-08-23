@@ -1,49 +1,115 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right,
+}
 
 public class BuildSlot : MonoBehaviour
 {
-    public Buildable buildablePrefab;
-    public Color highlightColor = Color.green;
+    [SerializeField] private float defaultTransparency = 0.5f;
+    [SerializeField] private float hoverTransparency = 0.75f;
 
-    private Color originalColor;
+    [Space(10)]
+    public Direction direction = Direction.Up;
+
+    [HideInInspector] public GameObject BuildingInstance;
+    [HideInInspector] public bool isOccupied = false;
+
     private SpriteRenderer spriteRenderer;
-    private bool isHighlighted = false;
-    public bool IsFilled { get; private set; } = false;
+    private BoxCollider2D boxCollider;
 
-    void Start()
+    private void Start()
     {
+        if(Builder.instance == null)
+        {
+            Debug.LogError("No Builder instance found in scene!");
+            return;
+        }
+
+        Builder.instance.buildSlots.Add(this);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    public void Highlight()
+    private void Update()
     {
-        if (!isHighlighted && !IsFilled)
+        if(Builder.instance == null)
+            return;
+
+        UpdateState();
+    }
+
+    void UpdateState()
+    {
+        if (isOccupied)
         {
-            spriteRenderer.color = highlightColor;
-            isHighlighted = true;
+            spriteRenderer.enabled = false;
+            return;
+        }
+
+        if (Builder.instance.isBuilding)
+        {
+            spriteRenderer.enabled = true;
+            Color color = spriteRenderer.color;
+            color.a = CheckMouseHover() ? hoverTransparency : defaultTransparency;
+            spriteRenderer.color = color;
+
+            if(Input.GetMouseButtonDown(0) && CheckMouseHover())
+            {
+                Build();
+            }
+        }
+        else
+        {
+            spriteRenderer.enabled = false;
         }
     }
 
-    public void RemoveHighlight()
+    void Build()
     {
-        if (isHighlighted)
+        if (BuildingInstance != null)
         {
-            spriteRenderer.color = originalColor;
-            isHighlighted = false;
+            Destroy(BuildingInstance);
+        }
+
+        BuildingInstance = Instantiate(Builder.instance.buildingPrefab, transform.position, Quaternion.Euler(0f, 0f, DirectionToRotation(direction)));
+        BuildingInstance.transform.parent = transform;
+        isOccupied = true;
+    }
+
+    void Destroy()
+    {
+        if (BuildingInstance != null)
+        {
+            Destroy(BuildingInstance);
         }
     }
 
-    public void Build()
+    bool CheckMouseHover()
     {
-        if (!IsFilled && buildablePrefab != null)
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return boxCollider.bounds.Contains(mousePos);
+    }
+
+    private float DirectionToRotation(Direction direction)
+    {
+        switch (direction)
         {
-            Instantiate(buildablePrefab, transform.position, Quaternion.identity);
-            buildablePrefab.Build();
-            IsFilled = true;
-            RemoveHighlight();
+            case Direction.Up:
+                return 0f;
+            case Direction.Down:
+                return 180f;
+            case Direction.Left:
+                return 90f;
+            case Direction.Right:
+                return 270f;
+            default:
+                return 0f;
         }
     }
 }
