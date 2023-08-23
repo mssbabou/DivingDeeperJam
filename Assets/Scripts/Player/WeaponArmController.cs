@@ -6,37 +6,54 @@ using UnityEngine.Rendering;
 
 public class WeaponArmController : MonoBehaviour
 {
+    [Header("Bullet spawning")]
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform spawnPoint;
+    [SerializeField] float damage;
+    [SerializeField] float attackSpeed;
+    [Space]
+
     [SerializeField] Transform playerArm;
     [SerializeField] Camera mainCamera;
 
 
+    PlayerControlsInputAction playerControls;
+
     SpriteRenderer playerRenderer;
     SpriteRenderer armRenderer;
     PlayerInput playerInput;
+
+    float attackCooldown = 0;
 
     void Awake()
     {
         playerRenderer = GetComponent<SpriteRenderer>();
         armRenderer = playerArm.gameObject.GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
+
+        playerControls = new PlayerControlsInputAction();
+        playerControls.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        // Rotate arm
         Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.value);
         Vector2 look = playerArm.InverseTransformPoint(mousePos);
 
         float angle = Mathf.Atan2(look.y, look.x) * Mathf.Rad2Deg;
 
         playerArm.Rotate(0, 0, angle);
-    }
 
-    bool IsLeftOfVector(Vector2 vector, Vector2 point)
-    {
-        Vector2 direction = point - vector;
-
-        return -vector.x * direction.y + vector.y * direction.x < 0;
+        // Shoot bullet
+        if (playerControls.Attacking.Shoot.IsPressed() && attackCooldown <= 0)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            bullet.GetComponent<Bullet>().SetDamage(damage);
+            attackCooldown = 1 / attackSpeed;
+        }
+        else if (attackCooldown > 0)
+            attackCooldown -= Time.deltaTime;
     }
 }

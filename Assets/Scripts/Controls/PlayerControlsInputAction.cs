@@ -100,24 +100,24 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
             ""id"": ""4e1190f6-edfd-4b37-bd97-11ec95a641ee"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""ba87b297-4395-4fc8-adaf-c82f2277606b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""6b913530-e648-40b1-9f8b-ade4dbd76d33"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -129,12 +129,12 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
             ""actions"": [
                 {
                     ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""760bb558-d5e9-4c40-b37d-41f7fefea867"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Bone"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -171,7 +171,7 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         // Attacking
         m_Attacking = asset.FindActionMap("Attacking", throwIfNotFound: true);
-        m_Attacking_Newaction = m_Attacking.FindAction("New action", throwIfNotFound: true);
+        m_Attacking_Shoot = m_Attacking.FindAction("Shoot", throwIfNotFound: true);
         // Interacting
         m_Interacting = asset.FindActionMap("Interacting", throwIfNotFound: true);
         m_Interacting_Newaction = m_Interacting.FindAction("New action", throwIfNotFound: true);
@@ -282,12 +282,12 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
     // Attacking
     private readonly InputActionMap m_Attacking;
     private List<IAttackingActions> m_AttackingActionsCallbackInterfaces = new List<IAttackingActions>();
-    private readonly InputAction m_Attacking_Newaction;
+    private readonly InputAction m_Attacking_Shoot;
     public struct AttackingActions
     {
         private @PlayerControlsInputAction m_Wrapper;
         public AttackingActions(@PlayerControlsInputAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Attacking_Newaction;
+        public InputAction @Shoot => m_Wrapper.m_Attacking_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Attacking; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,16 +297,16 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
         {
             if (instance == null || m_Wrapper.m_AttackingActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_AttackingActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IAttackingActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IAttackingActions instance)
@@ -385,7 +385,7 @@ public partial class @PlayerControlsInputAction: IInputActionCollection2, IDispo
     }
     public interface IAttackingActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
     public interface IInteractingActions
     {

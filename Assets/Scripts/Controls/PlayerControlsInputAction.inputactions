@@ -78,24 +78,24 @@
             "id": "4e1190f6-edfd-4b37-bd97-11ec95a641ee",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "ba87b297-4395-4fc8-adaf-c82f2277606b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "6b913530-e648-40b1-9f8b-ade4dbd76d33",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "groups": "Keyboard",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -107,12 +107,12 @@
             "actions": [
                 {
                     "name": "New action",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "760bb558-d5e9-4c40-b37d-41f7fefea867",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Bone",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
