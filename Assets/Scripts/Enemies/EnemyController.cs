@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Mobility")]
     [SerializeField] float speed;
-    [SerializeField] Transform target;
+    public Transform target;
 
     Health targetHealth;
 
