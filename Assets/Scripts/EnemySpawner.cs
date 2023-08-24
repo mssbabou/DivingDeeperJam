@@ -90,6 +90,8 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector2 spawnPos;
         byte areaIndex;
+        GameObject spawnedObject;
+
 
         while (isSpawning)
         {
@@ -101,16 +103,19 @@ public class EnemySpawner : MonoBehaviour
             // Choose and spawn enemies
             float enemyValue = Random.value;
             if (enemyValue < spawnSettings.meleeChance)
-                Instantiate(meleePrefab, spawnPos, Quaternion.identity);
+                spawnedObject = Instantiate(meleePrefab, spawnPos, Quaternion.identity);
 
             else if (enemyValue < spawnSettings.meleeChance + spawnSettings.rangedChance)
-                Instantiate(rangedPrefab, spawnPos, Quaternion.identity);
+                spawnedObject = Instantiate(rangedPrefab, spawnPos, Quaternion.identity);
 
             else
             {
                 Debug.LogError("No enemy selected for spawning due to bad code, melee enemy chosen instead");
-                Instantiate(meleePrefab, spawnPos, Quaternion.identity);
+                spawnedObject = Instantiate(meleePrefab, spawnPos, Quaternion.identity);
             }
+
+            if (areaIndex == 1)
+                spawnedObject.GetComponent<SpriteRenderer>().flipX = true;
 
             yield return new WaitForSeconds(1f / spawnSettings.spawnFrequency);
         }
