@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    Transform target;
 
     Rigidbody2D rb;
     Vector2 direction;
@@ -13,11 +13,12 @@ public class EnemyMovement : MonoBehaviour
     float range;
     EnemyType type;
 
-    public void Init(float speed, float range, EnemyType type)
+    public void Init(float speed, float range, EnemyType type, Transform target)
     {
         this.speed = speed;
         this.range = range;
         this.type = type;
+        this.target = target;
     }
 
     void Awake ()

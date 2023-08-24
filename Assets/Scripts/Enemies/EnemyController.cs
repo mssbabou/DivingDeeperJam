@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         healthScript.Init(health, armor);
-        enemyMovement.Init(speed, range, type);
+        enemyMovement.Init(speed, range, type, target);
     }
 
     void Update()

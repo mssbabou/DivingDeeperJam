@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6361915423958443711}
   - component: {fileID: 7701098234547415655}
   m_Layer: 7
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,9 +137,9 @@ MonoBehaviour:
   health: 25
   armor: 5
   damage: 10
-  range: 5
+  range: 1
   attackSpeed: 1
-  speed: 500
+  speed: 100
   target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
 --- !u!114 &6013692165548068443
 MonoBehaviour:
@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e8d6b035d3108408f0bd2de5ff3542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
 --- !u!114 &7574511172056509462
 MonoBehaviour:
   m_ObjectHideFlags: 0
