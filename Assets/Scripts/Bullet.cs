@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(nameof(DespawnTimer));
+        Invoke(nameof(DestroyBullet), duration);
     }
 
     // Update is called once per frame
@@ -24,8 +24,8 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit something");
         collision.GetComponent<Health>().TakeDamage(damage);
+        DestroyBullet();
     }
 
     public void SetDamage(float damage)
@@ -33,9 +33,8 @@ public class Bullet : MonoBehaviour
         this.damage = damage;
     }
 
-    IEnumerator DespawnTimer()
+    void DestroyBullet()
     {
-        yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 }

@@ -49,7 +49,13 @@ public class WeaponArmController : MonoBehaviour
         // Shoot bullet
         if (playerControls.Attacking.Shoot.IsPressed() && attackCooldown <= 0)
         {
-            GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            Vector2 bulletLook = spawnPoint.InverseTransformPoint(mousePos);
+            float bulletAngle = Mathf.Atan2(bulletLook.y, bulletLook.x) * Mathf.Rad2Deg - 90;
+
+            GameObject bullet = Instantiate(bulletPrefab,
+                spawnPoint.position,
+                Quaternion.Euler(0, 0, spawnPoint.eulerAngles.z + bulletAngle));
+
             bullet.GetComponent<Bullet>().SetDamage(damage);
             attackCooldown = 1 / attackSpeed;
         }
