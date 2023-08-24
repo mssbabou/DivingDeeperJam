@@ -19,7 +19,8 @@ public class EnemyController : MonoBehaviour
 
     [Header("Mobility")]
     [SerializeField] float speed;
-    public Transform target;
+    
+    Transform target;
 
     Health targetHealth;
 
@@ -31,6 +32,8 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
+        target = GameManager.Singleton.Submarine;
+
         targetHealth = target.gameObject.GetComponent<Health>();
 
         healthScript = GetComponent<Health>();

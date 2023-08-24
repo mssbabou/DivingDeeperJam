@@ -90,8 +90,6 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector2 spawnPos;
         byte areaIndex;
-        GameObject spawnedObject;
-
 
         while (isSpawning)
         {
@@ -103,19 +101,17 @@ public class EnemySpawner : MonoBehaviour
             // Choose and spawn enemies
             float enemyValue = Random.value;
             if (enemyValue < spawnSettings.meleeChance)
-                spawnedObject = Instantiate(meleePrefab, spawnPos, Quaternion.identity);
+                Instantiate(meleePrefab, spawnPos, Quaternion.identity);
 
             else if (enemyValue < spawnSettings.meleeChance + spawnSettings.rangedChance)
-                spawnedObject = Instantiate(rangedPrefab, spawnPos, Quaternion.identity);
+                Instantiate(rangedPrefab, spawnPos, Quaternion.identity);
 
             else
             {
                 Debug.LogError("No enemy selected for spawning due to bad code, melee enemy chosen instead");
-                spawnedObject = Instantiate(meleePrefab, spawnPos, Quaternion.identity);
+                Instantiate(meleePrefab, spawnPos, Quaternion.identity);
             }
 
-
-            spawnedObject.GetComponent<EnemyController>().target = submarine;
             yield return new WaitForSeconds(1f / spawnSettings.spawnFrequency);
         }
     }

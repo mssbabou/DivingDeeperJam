@@ -16,11 +16,21 @@ public class Health : MonoBehaviour
     {
         this.health = health;
         this.armor = armor;
+
+        Debug.Log(this.health);
+    }
+
+    private void Update()
+    {
+        Debug.Log($"Health: {health}, armor: {armor}");
     }
 
     public void TakeDamage(float damage)
     {
         health -= damage * (1 - armor/100);
+
+        Debug.Log(damage);
+        Debug.Log(health);
 
         if (health <= 0)
             death?.Invoke();

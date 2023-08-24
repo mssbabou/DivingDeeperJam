@@ -140,7 +140,7 @@ MonoBehaviour:
   range: 2
   attackSpeed: 0.8
   speed: 80
-  target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
+  target: {fileID: 0}
 --- !u!114 &6013692165548068443
 MonoBehaviour:
   m_ObjectHideFlags: 0

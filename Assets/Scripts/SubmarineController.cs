@@ -20,7 +20,7 @@ public class SubmarineController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthScript.Init(health, 1);   
+        healthScript.Init(health, 69);   
     }
 
     void OnDie()
