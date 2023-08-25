@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public Transform Submarine;
 
+    public float currentDepth { get; private set; } = 0;
     public float DiveSpeed;
     public float[] TierDepth = new float[5];
 
@@ -16,7 +17,6 @@ public class GameManager : MonoBehaviour
     public UnityAction<Difficulty> OnNewTier;
     public UnityAction OnGameWin;
 
-    float currentDepth = 0;
 
     void Awake()
     {
