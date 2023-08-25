@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3800868671565805597}
   - component: {fileID: 1461006143260408399}
-  - component: {fileID: 443916093000068029}
-  - component: {fileID: 4646547028994836333}
+  - component: {fileID: 3359847212207909982}
+  - component: {fileID: 1694366675799493552}
   m_Layer: 6
   m_Name: Submarine
   m_TagString: Submarine
@@ -112,12 +112,12 @@ Transform:
   m_GameObject: {fileID: 1730448305787177767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1498382072762239863}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1461006143260408399
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
---- !u!114 &443916093000068029
+--- !u!114 &3359847212207909982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d4ab210ec1a15847a6b50af57283146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!70 &4646547028994836333
+--- !u!70 &1694366675799493552
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

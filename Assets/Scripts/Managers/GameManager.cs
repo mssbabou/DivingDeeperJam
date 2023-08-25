@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+
+        OnGameWin += Win;
     }
 
     // Start is called before the first frame update
@@ -52,7 +56,17 @@ public class GameManager : MonoBehaviour
             OnNewTier?.Invoke(CurrentTier);
         }
     }
+
+    /// <summary>
+    /// Dummy Win Function
+    /// </summary>
+    void Win()
+    {
+        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+    }
+
 }
+
 
 public enum Difficulty
 {

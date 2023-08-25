@@ -24,6 +24,13 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit tag: " + collision.tag);
+        if (collision.CompareTag("Submarine"))
+            DestroyBullet();
+
+        if (!collision.CompareTag("Enemy"))
+            return;
+
         collision.GetComponent<Health>().TakeDamage(damage);
         DestroyBullet();
     }
