@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Submarine: {fileID: 1359294691}
-  DiveSpeed: 5
+  DiveSpeed: 500
   TierDepth:
   - 200
   - 500
@@ -621,7 +621,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: e1d173d66103c0645b723f886be487d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -722,32 +722,12 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1730448305787177767, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
   m_PrefabInstance: {fileID: 1521540583986855151}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1359294681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!4 &1359294691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
+  m_PrefabInstance: {fileID: 1521540583986855151}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359294677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1561a1a5a6aaaca42b505b25e3860376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
---- !u!114 &1359294682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359294677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4ab210ec1a15847a6b50af57283146, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!50 &1359294687
+--- !u!50 &1359294696
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -755,7 +735,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359294677}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -774,11 +754,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!4 &1359294691 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-  m_PrefabInstance: {fileID: 1521540583986855151}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1440628757
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +826,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: 21300000, guid: e47709e3aabdcc843a8558dd9ac35791, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -906,25 +881,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Submarine
       objectReference: {fileID: 0}
-    - target: {fileID: 1730448305787177767, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -966,23 +925,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3800868671565805597, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1730448305787177767, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1359294682}
-    - targetCorrespondingSourceObject: {fileID: 1730448305787177767, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1359294681}
-    - targetCorrespondingSourceObject: {fileID: 1730448305787177767, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1359294687}
+      addedObject: {fileID: 1359294696}
   m_SourcePrefab: {fileID: 100100000, guid: a01629b38ec92a8499d246f3caff2a06, type: 3}
 --- !u!1001 &6151514539021132737
 PrefabInstance:

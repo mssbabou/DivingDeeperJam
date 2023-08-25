@@ -22,10 +22,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (Singleton == null)
-        {
             Singleton = this;
-            DontDestroyOnLoad(gameObject);
-        }
         else
             Destroy(gameObject);
 
