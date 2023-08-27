@@ -63,19 +63,19 @@ public class EnemySpawner : MonoBehaviour
                 break;
 
             case Difficulty.Tier3:
-                spawnSettings.spawnFrequency = 2f;
+                spawnSettings.spawnFrequency = 1.5f;
                 spawnSettings.meleeChance = .6f;
                 spawnSettings.rangedChance = .4f;
                 break;
 
             case Difficulty.Tier4:
-                spawnSettings.spawnFrequency = 3.5f;
+                spawnSettings.spawnFrequency = 1.7f;
                 spawnSettings.meleeChance = .4f;
                 spawnSettings.rangedChance = .6f;
                 break;
 
             case Difficulty.Tier5:
-                spawnSettings.spawnFrequency = 5f;
+                spawnSettings.spawnFrequency = 3f;
                 spawnSettings.meleeChance = .33f;
                 spawnSettings.rangedChance = .67f;
                 break;

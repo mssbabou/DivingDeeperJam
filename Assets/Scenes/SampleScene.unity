@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Submarine: {fileID: 1359294691}
-  DiveSpeed: 500
+  DiveSpeed: 15
   TierDepth:
   - 200
   - 500
